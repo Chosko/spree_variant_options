@@ -46,6 +46,7 @@ function VariantOptions(params) {
     divs = $('#product-variants .variant-options');
     disable(divs.find('a.option-value').addClass('locked'));
     update();
+    inventory(buttons);
     enable(parent.find('a.option-value'));
     toggle();
     $('.clear-option a.clear-button').hide().click(handle_clear);
@@ -135,7 +136,7 @@ function VariantOptions(params) {
             var j = ids.length;
             while (j--) {
               obj = opv[ids[j]];
-              if (obj && $.keys(obj).length && 0 <= selection.indexOf(obj.id.toString())) {
+              if (obj && $.keys(obj).length) {
                 variants[obj.id] = obj;
               }
             }
