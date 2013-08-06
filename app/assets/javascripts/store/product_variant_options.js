@@ -13,7 +13,7 @@ var show_variant_images = function(variant_id) {
     var newImg = thumb.find('a').attr('href');
     $('ul.thumbnails li').removeClass('selected');
     thumb.addClass('selected');
-    $('#main-image img').attr('src', newImg);
+    $('#main-image img').not('.click-to-zoom').attr('src', newImg);
     $("#main-image").data('selectedThumb', newImg);
     $("#main-image").data('selectedThumbId', thumb.attr('id'));
   }
