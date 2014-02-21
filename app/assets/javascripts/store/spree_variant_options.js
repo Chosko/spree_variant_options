@@ -77,7 +77,8 @@ function VariantOptions(params) {
     bt = btns.not('.unavailable').removeClass('locked').unbind('click');
     if (!allow_select_outofstock && !allow_backorders)
       bt = bt.filter('.in-stock');
-    return bt.click(handle_click).filter('.auto-click').removeClass('auto-click').click();
+    bt = bt.click(handle_click).filter('.auto-click').removeClass('auto-click')
+    return bt.first().click();
   }
 
   function advance() {
@@ -108,7 +109,7 @@ function VariantOptions(params) {
         disable($(element).addClass('unavailable locked').unbind('click'));
       } else if (keys.length == 1) {
         _var = variants[keys[0]];
-        $(element).addClass((allow_backorders || _var.count || _var.backorderable) ? selection.length == 1 ? 'in-stock auto-click' : 'in-stock' : 'out-of-stock');
+        $(element).addClass((allow_backorders || _var.count || _var.backorderable) ? selection.length == 1 ? 'in-stock auto-click' : 'in-stock auto-click' : 'out-of-stock');
       } else if (allow_backorders) {
         $(element).addClass('in-stock');
       } else {
